@@ -6,7 +6,7 @@
 using namespace std;
 
 class PersonBuilder : public PersonBuilderBase {
-    Person p;
+    Person p; // build the person
 
   public:
     PersonBuilder() : PersonBuilderBase{p} {
