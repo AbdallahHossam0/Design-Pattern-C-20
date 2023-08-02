@@ -9,10 +9,9 @@ template <typename T> class Converter {
   public:
     string convert(const int from) { return to_string(from); }
     T convertBack(const string &to) {
+        istringstream iss(to);
         T t;
-        try {
-            t = stof(to);
-        } catch (...) {
+        if (!(iss >> t) || !iss.eof()) {
             return numeric_limits<T>::min();
         }
         return t;
@@ -20,7 +19,7 @@ template <typename T> class Converter {
 };
 
 int main(void) {
-    Converter<float> converter;
+    Converter<int> converter;
     cout << converter.convert(15) << endl;
     cout << converter.convertBack("19") << endl;
     cout << converter.convertBack("12.2") << endl;
